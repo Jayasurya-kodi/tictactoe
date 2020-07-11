@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+      .r{
+          border-style: double;
+          background-color: transparent;
+          color: green;
+          font-style: oblique;
+      }
+      body{
+          background-image: url(ttt.png);
+          background-repeat: no-repeat;
+          background-size: cover;
+      }
+      .card{
+        margin: 0 auto;
+        margin-top: 25px;
+        width: 300px;
+        background-color: transparent;
+      }
+      .a1,.a2,.a3,.a4,.a5,.a6,.a7,.a8,.a9{
+          border-color: greenyellow;
+          background-color: black;
+          color: whitesmoke;
+          font-size:xx-large;
+          width: 70px;
+          height:70px;
+          margin-left: -6px;
+          margin-top: -2px;
+      }
+      h1,h2{
+          margin-top: 10px;
+          font-family: cursive;
+          color:green;
+          text-align: center;
+      }
+      .a1{border-top: none; border-left: none; outline:none;}
+      .a2{border-top: none; outline:none;}
+      .a3{border-top: none; border-right: none; outline:none;}
+      .a4{ border-left: none; outline:none;}
+      .a6{border-right: none; outline:none;}
+      .a5{outline:none;}
+      .a7{border-bottom: none; border-left: none; outline:none;}
+      .a8{border-bottom: none; outline:none;}
+      .a9{border-bottom: none; border-right: none; outline:none;}
+
+      
+
+      
+  </style>
+</head>
+<body >
+    <h1>TIC-TAC-TOE</h1>
+<div class="card">  
+    <div class="card-body">
+        <input onclick="change(0,'a')" class="a1" type="button" value=" " id="a" />
+        <input onclick="change(1,'b')" class="a2" type="button" value=" " id="b" />
+        <input onclick="change(2,'c')" class="a3" type="button" value=" " id="c" />
+
+<br> 
+<input onclick="change(3,'d')" class="a4" type="button" value=" " id="d" />
+<input onclick="change(4,'e')" class="a5" type="button" value=" " id="e" />
+<input onclick="change(5,'f')" class="a6" type="button" value=" " id="f" />
+
+<br>
+
+<input onclick="change(6,'g')" class="a7" type="button" value=" " id="g" />
+<input onclick="change(7,'h')" class="a8" type="button" value=" " id="h" />
+<input onclick="change(8,'i')" class="a9" type="button" value=" " id="i" />
+
+<br>
+</div>
+<input onclick="reset()" class="r" type="button" value="RESET" id="k" />
+
+</div>
+<h2>by JAYASURYA.K</h2>
+
+<script>
+p=1;
+a=[0,0,0,0,0,0,0,0,0];
+function reset(){
+    p=1;
+    
+    for(i=0;i<a.length;i++){
+        a[i]=0;
+    }
+    document.getElementById("a").value=" ";
+    document.getElementById("b").value=" ";
+    document.getElementById("c").value=" ";
+    document.getElementById("d").value=" ";
+    document.getElementById("e").value=" ";
+    document.getElementById("f").value=" ";
+    document.getElementById("g").value=" ";
+    document.getElementById("h").value=" ";
+    document.getElementById("i").value=" ";
+    document.getElementById("a").disabled=false;
+    document.getElementById("b").disabled=false;
+    document.getElementById("c").disabled=false;
+    document.getElementById("d").disabled=false;
+    document.getElementById("e").disabled=false;
+    document.getElementById("f").disabled=false;
+    document.getElementById("g").disabled=false;
+    document.getElementById("h").disabled=false;
+    document.getElementById("i").disabled=false;
+    
+}
+function change(val,id)
+{
+    document.getElementById(id).disabled = true;
+    if(p==1){
+    document.getElementById(id).value="X"; 
+    p*=-1
+    a[val]=1;
+    }
+    else{
+    document.getElementById(id).value="O"; 
+    p*=-1
+    a[val]=2;
+    }
+    jj();
+}
+function jj(){
+ if((a[0]==1&&a[4]==1&&a[8]==1)||(a[0]==1&&a[3]==1&&a[6]==1)||(a[0]==1&&a[1]==1&&a[2]==1)||(a[1]==1&&a[4]==1&&a[7]==1)||(a[3]==1&&a[4]==1&&a[5]==1)||(a[2]==1&&a[4]==1&&a[6]==1)||(a[2]==1&&a[5]==1&&a[8]==1)||(a[6]==1&&a[7]==1&&a[8]==1)){
+           confirm("player1 wins");
+    }
+    else if((a[0]==2&&a[4]==2&&a[8]==2)||(a[0]==2&&a[3]==2&&a[6]==2)||(a[0]==2&&a[1]==2&&a[2]==2)||(a[1]==2&&a[4]==2&&a[7]==2)||(a[3]==2&&a[4]==2&&a[5]==2)||(a[2]==2&&a[4]==2&&a[6]==2)||(a[2]==2&&a[5]==2&&a[8]==2)||(a[6]==2&&a[7]==2&&a[8]==2)){
+           confirm("player2 wins");
+    }
+    else if(a[0]!=0&&a[1]!=0&&a[2]!=0&&a[3]!=0&&a[4]!=0&&a[5]!=0&&a[6]!=0&&a[7]!=0&&a[8]!=0){
+        confirm("MATCH DRAW");
+    }
+}
+</script>
